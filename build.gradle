@@ -1,0 +1,47 @@
+allprojects {
+    group = "com.example"
+    version = "1.0"
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        junitVersion = '5.9.1'
+    }
+
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
+
+    tasks.register("prepareKotlinBuildScriptModel") {}
+
+    tasks.register("printInfo") {
+        doLast {
+            println "This is ${project.name}"
+        }
+    }
+}
+
+tasks.register("copyArchives", Copy) {
+    def earBuildDir = project('bookstore-ear').projectDir.name
+    from ("${earBuildDir}/build/libs") {
+        include "**/${earBuildDir}.ear"
+    }
+    def webBuildDir = project('bookstore-client').projectDir.name
+    from ("$webBuildDir/build/libs") {
+        include "**/${webBuildDir}.war"
+    }
+    into "$System.env.DEPLOYMENT_DIR"
+    doNotTrackState("Installation directory contains unrelated files")
+    println("Copied file to $System.env.DEPLOYMENT_DIR")
+}
+
+

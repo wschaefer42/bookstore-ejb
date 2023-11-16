@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+left to right direction
+package client {
+    class books << (S,#FF7700) Facelets >>
+    hide empty member
+    class BookBacking <<Model>> {
+        books: List<Book>
+        search(query)
+    }
+    books ..> BookBacking
+}
+package common {
+    () Catalog <<Remote>>
+    class BookItem {
+    }
+    Catalog ..> BookItem
+}
+client.BookBacking --( common.Catalog
+package server {
+    class CatalogBean <<Stateless>> {
+    }
+    CatalogBean - common.Catalog
+    CatalogBean ..> domain.BookService
+    package domain {
+        class BookService <<ApplicationScoped>> {
+        }
+        class AuthorDetail <<embeddable>> {
+        }
+        entity Author <<Entity>> {
+        }
+        entity Book <<Entity>> {
+        }
+        entity Category <<Entity>> {
+        }
+        Author "n" -- "n" Book
+        Book "n" -- "1" Category
+        Author *-- AuthorDetail
+        BookService ..> Book
+    }
+    class BookLoader
+    BookLoader .> BookService
+}
+node PostgresDB {
+}
+server.domain.BookService ..> PostgresDB
+@enduml

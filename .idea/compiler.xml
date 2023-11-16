@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="17">
+      <module name="bookstore-client" target="11" />
+      <module name="bookstore-client.main" target="11" />
+      <module name="bookstore-client.test" target="11" />
+      <module name="bookstore-common" target="11" />
+      <module name="bookstore-common.main" target="11" />
+      <module name="bookstore-common.test" target="11" />
+      <module name="bookstore-ear" target="11" />
+      <module name="bookstore-ear.main" target="11" />
+      <module name="bookstore-ear.test" target="11" />
+      <module name="bookstore-server" target="11" />
+      <module name="bookstore-server.main" target="11" />
+      <module name="bookstore-server.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
