@@ -1,5 +1,5 @@
 rootProject.name = 'bookstore-ejb'
-include 'bookstore-client'
+include 'bookstore-web'
 include 'bookstore-common'
 include 'bookstore-ear'
-include 'bookstore-server'
+include 'bookstore-ejb'

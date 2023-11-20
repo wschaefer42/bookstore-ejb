@@ -1,0 +1,8 @@
+### Get all from client
+GET {{client-host}}/api/books
+
+### Load data in server
+PUT {{server-host}}/ejb/catalog/init?deleteAll=true
+
+### Get all from server
+GET {{server-host}}/ejb/catalog

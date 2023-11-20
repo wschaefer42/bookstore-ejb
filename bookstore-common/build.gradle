@@ -4,8 +4,8 @@ plugins {
 
 dependencies {
   compileOnly('jakarta.platform:jakarta.jakartaee-web-api:10.0.0')
-  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+  compileOnly 'org.projectlombok:lombok:+'
+  annotationProcessor 'org.projectlombok:lombok:+'
 }
 
 jar {

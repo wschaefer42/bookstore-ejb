@@ -30,18 +30,27 @@ subprojects {
     }
 }
 
+ext {
+    def val = System.getenv("DEPLOYMENT_DIR")
+    if (val != null) {
+        deploymentDir=val
+    }
+}
+
 tasks.register("copyArchives", Copy) {
+    dependsOn(':bookstore-ear:ear')
     def earBuildDir = project('bookstore-ear').projectDir.name
     from ("${earBuildDir}/build/libs") {
         include "**/${earBuildDir}.ear"
     }
-    def webBuildDir = project('bookstore-client').projectDir.name
+    dependsOn(':bookstore-web:war')
+    def webBuildDir = project('bookstore-web').projectDir.name
     from ("$webBuildDir/build/libs") {
         include "**/${webBuildDir}.war"
     }
-    into "$System.env.DEPLOYMENT_DIR"
+    into "${deploymentDir}"
     doNotTrackState("Installation directory contains unrelated files")
-    println("Copied file to $System.env.DEPLOYMENT_DIR")
+    println("Copied file to ${deploymentDir}")
 }
 
 

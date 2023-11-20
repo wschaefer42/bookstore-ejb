@@ -8,10 +8,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/bookstore-client" />
             <option value="$PROJECT_DIR$/bookstore-common" />
             <option value="$PROJECT_DIR$/bookstore-ear" />
-            <option value="$PROJECT_DIR$/bookstore-server" />
+            <option value="$PROJECT_DIR$/bookstore-ejb" />
+            <option value="$PROJECT_DIR$/bookstore-web" />
           </set>
         </option>
       </GradleProjectSettings>

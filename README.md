@@ -14,6 +14,12 @@ Set DEPLOYMENT_DIR environment variable
 export DEPLOYMENT_DIR=$GLASSFISH_HOME/glassfish/domains/domain2/autodeploy
 ````
 
+### Payara
+Set DEPLOYMENT_DIR for payara6. **Payara does NOT support EJB**.
+```shell
+export DEPLOYMENT_DIR=$PAYARA_HOME/glassfish/domains/domain3/autodeploy
+```
+
 ### WildFly
 JBoss WildFly was installed with Homebrew on macOS
 ````shell

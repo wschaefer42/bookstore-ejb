@@ -8,12 +8,10 @@ apply plugin: 'ear'
 dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-  deploy project(path: ':bookstore-server', configuration: 'archives')
+  deploy project(path: ':bookstore-ejb', configuration: 'archives')
+  // deploy project(path: ':bookstore-web', configuration: 'archives')
   earlib project(':bookstore-common')
-}
-
-jar {
-  archiveFileName.set("${project.name}.jar")
+  earlib implementation('com.opencsv:opencsv:+')
 }
 
 ear {
